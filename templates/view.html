@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>{{.Title}}</title>
+	<link rel="stylesheet" type="text/css" href="/static/styles.css">
+</head>
+
+<body>
+	<nav>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/blog">Blog</a></li>
+		</ul>
+	</nav>
+
+	<h1>{{.Title}}</h1>
+	<div id="content">
+		<p>{{.Content}}</p>
+		<small>Posted on {{.CreatedAt}}</small>
+		<br>
+		<a href="/update?id={{.ID}}">Edit</a>
+		<form method="post" action="/delete" style="display:inline;">
+			<input type="hidden" name="id" value="{{.ID}}">
+			<button type="submit">Delete</button>
+		</form>
+	</div>
+</body>
+
+</html>

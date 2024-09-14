@@ -1,0 +1,213 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav {
+    background-color: var(--nav-background);
+    color: var(--nav-text-color);
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 1em;
+}
+
+nav ul li a {
+    color: var(--nav-text-color);
+    text-decoration: none;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-top: 1em;
+}
+
+#content {
+    padding: 2em;
+    /* background-color: var(--content-background); */
+    margin: 2em auto;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Blog Post Styles */
+.post {
+    background-color: var(--post-background);
+    border: 1px solid var(--post-border);
+    border-radius: 5px;
+    padding: 1em;
+    margin-bottom: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post h2 {
+    margin-top: 0;
+}
+
+.post p {
+    line-height: 1.6;
+}
+
+.post small {
+    display: block;
+    margin-top: 1em;
+    color: var(--post-small-text);
+}
+
+/* Form Styles */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1em;
+    background: var(--form-background);
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+form label {
+    margin-bottom: .5em;
+    color: var(--label-color);
+    display: block;
+}
+
+form input[type="text"],
+form textarea {
+    border: 1px solid var(--input-border);
+    padding: .5em;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin-bottom: 1em;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: flex-end; /* Align buttons to the right */
+    gap: 1em; /* Space between buttons */
+}
+
+form button {
+    padding: 0.7em;
+    color: #fff;
+    background-color: var(--button-background);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+form button:hover {
+    background-color: var(--button-hover-background);
+}
+
+.cancel-button {
+    background-color: #f44336; /* Red color */
+}
+
+.cancel-button:hover {
+    background-color: #d32f2f; /* Darker red */
+}
+
+/* Link Styles */
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Button Styles */
+button {
+    padding: 0.5em 1em;
+    color: #fff;
+    background-color: var(--button-background);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: var(--button-hover-background);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+}
+
+/* Light Mode */
+.light-mode {
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --nav-background: #333;
+    --nav-text-color: #fff;
+    --content-background: #fff;
+    --post-background: #fff;
+    --post-border: #ddd;
+    --post-small-text: #666;
+    --form-background: #fff;
+    --label-color: #333;
+    --input-border: #CCCCCC;
+    --button-background: #333;
+    --button-hover-background: #555;
+    --link-color: #333;
+}
+
+/* Dark Mode */
+.dark-mode {
+    --background-color: #121212;
+    --text-color: #e0e0e0;
+    --nav-background: #1f1f1f;
+    --nav-text-color: #e0e0e0;
+    --content-background: #1e1e1e;
+    --post-background: #1e1e1e;
+    --post-border: #444;
+    --post-small-text: #aaa;
+    --form-background: #2c2c2c;
+    --label-color: #e0e0e0;
+    --input-border: #555;
+    --button-background: #444;
+    --button-hover-background: #666;
+    --link-color: #e0e0e0;
+}
+
