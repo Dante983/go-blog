@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Create Post</title>
+	<link rel="stylesheet" type="text/css" href="/static/styles.css">
+	<script src="/static/theme-switcher.js" defer></script>
+</head>
+
+<body class="light-mode">
+	<nav>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/blog">Blog</a></li>
+		</ul>
+		<button id="themeSwitcher">🌙</button>
+	</nav>
+
+	<h1>Create a New Post</h1>
+	<div id="content">
+		<form id="createPostForm" method="post" action="/create">
+			<label for="title">Title:</label>
+			<input type="text" id="title" name="title" required>
+			<br>
+			<label for="content">Content:</label>
+			<textarea id="content" name="content" required></textarea>
+			<br>
+			<div class="form-buttons">
+				<button type="submit">Create</button>
+				<button type="button" id="cancelButton" class="cancel-button">Cancel</button>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		document.getElementById('createPostForm').addEventListener('submit', function (event) {
+			event.preventDefault(); // Prevent the default form submission
+			const form = event.target;
+			const formData = new FormData(form);
+
+			fetch(form.action, {
+				method: 'POST',
+				body: formData
+			})
+				.then(response => {
+					if (response.ok) {
+						window.location.href = "/blog"; // Redirect to /blog
+					} else {
+						alert('Error: Could not submit the form');
+					}
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					alert('Error: Could not submit the form');
+				});
+		});
+
+		document.getElementById('cancelButton').addEventListener('click', function () {
+			window.location.href = "/blog"; // Redirect to /blog
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Home Page</title>
+	<link rel="stylesheet" type="text/css" href="/static/styles.css">
+	<script src="/static/theme-switcher.js" defer></script>
+</head>
+
+<body class="light-mode">
+	<nav>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/about">About</a></li>
+			<li><a href="/blog">Blogs</a></li>
+		</ul>
+		<button id="themeSwitcher">🌙</button>
+	</nav>
+
+	<h1>Welcome to the Home Page!</h1>
+	<div id="content">
+		{{range .}}
+		<div class="post">
+			<h2>{{.Title}}</h2>
+			<p>{{.Content}}</p>
+			<small>Posted on {{.CreatedAt}}</small>
+		</div>
+		{{else}}
+		<p>No blog posts available.</p>
+		{{end}}
+	</div>
+</body>
+
+</html>
