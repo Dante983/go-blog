@@ -28,8 +28,14 @@
 			<textarea id="content" name="content" required>{{.Content}}</textarea>
 			<br>
 			<button type="submit">Update</button>
+			<button type="button" id="cancelButton" class="cancel-button">Cancel</button>
 		</form>
 	</div>
 </body>
+<script>
+	document.getElementById('cancelButton').addEventListener('click', function () {
+		window.location.href = "/blog"; // Redirect to /blog
+	});
+</script>
 
 </html>

@@ -9,7 +9,7 @@ import (
 
 	"github.com/dante983/go_one/routes"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/joho/godotenv" // Import godotenv
+	"github.com/joho/godotenv"
 )
 
 var db *sql.DB

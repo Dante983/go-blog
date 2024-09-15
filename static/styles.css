@@ -38,6 +38,10 @@ h1, h2 {
     margin-top: 1em;
 }
 
+p {
+    text-align: center;
+}
+
 #content {
     padding: 2em;
     /* background-color: var(--content-background); */
