@@ -28,6 +28,8 @@ func main() {
 	r.Get("/posts", handlers.PostsHandler)
 	r.Get("/posts/{slug}", handlers.SinglePostHandler)
 	r.Get("/load-snippet", handlers.SnippetHandler)
+	r.Get("/admin/posts/new", handlers.AdminNewPostForm)
+	r.Post("/admin/posts", handlers.AdminCreatePost)
 
 	views.LoadTemplates()
 	log.Println("Server started on :8080")
