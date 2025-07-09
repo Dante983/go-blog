@@ -15,3 +15,7 @@ func SinglePostHandler(w http.ResponseWriter, r *http.Request) {
 	slug := chi.URLParam(r, "slug")
 	w.Write([]byte(fmt.Sprintf("Showing blog post: %s", slug)))
 }
+
+func SnippetHandler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("<p><strong>Loaded via HTMX!</strong></p>"))
+}

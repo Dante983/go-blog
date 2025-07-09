@@ -10,6 +10,7 @@ import (
 
 	"github.com/Dante983/go-blog/internal/db"
 	"github.com/Dante983/go-blog/internal/handlers"
+	"github.com/Dante983/go-blog/internal/views"
 )
 
 func main() {
@@ -26,7 +27,9 @@ func main() {
 	r.Get("/", handlers.HomeHandler)
 	r.Get("/posts", handlers.PostsHandler)
 	r.Get("/posts/{slug}", handlers.SinglePostHandler)
+	r.Get("/load-snippet", handlers.SnippetHandler)
 
+	views.LoadTemplates()
 	log.Println("Server started on :8080")
 	err := http.ListenAndServe(":8080", r)
 	if err != nil {

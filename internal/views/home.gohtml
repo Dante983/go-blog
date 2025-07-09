@@ -1,0 +1,14 @@
+{{ define "title" }}Home - Nikola's Blog{{ end }}
+
+{{ define "content" }}
+<p>Welcome to my blog. This is where I share my thoughts on Go and teaching.</p>
+
+<button 
+    hx-get="/load-snippet" 
+    hx-target="#snippet" 
+    hx-swap="innerHTML">
+    Load something via HTMX
+</button>
+
+<div id="snippet"></div>
+{{ end }}
