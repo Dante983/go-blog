@@ -1,0 +1,10 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+  cmd = "go run ./cmd/blog"
+  include_ext = ["go"]
+  exclude_dir = ["assets", "migrations"]
+
+[log]
+  time = true
