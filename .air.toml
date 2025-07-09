@@ -2,9 +2,9 @@ root = "."
 tmp_dir = "tmp"
 
 [build]
-  cmd = "go run ./cmd/blog"
+  cmd = "go build -o tmp/main ./cmd/blog"
   include_ext = ["go"]
-  exclude_dir = ["assets", "migrations"]
+  exclude_dir = ["assets", "migrations", "tmp"]
 
 [log]
   time = true
