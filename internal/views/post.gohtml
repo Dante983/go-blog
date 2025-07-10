@@ -1,4 +1,4 @@
-{{ define "admin_new" }}
+{{ define "post" }}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,22 +28,18 @@
             </nav>
         </header>
 
-        <h2>Create a New Post</h2>
-
-        <form 
-            hx-post="/admin/posts" 
-            hx-target="#result" 
-            hx-swap="innerHTML"
-        >
-            <label>Title: <input type="text" name="title" required></label><br>
-            <label>Slug: <input type="text" name="slug" required></label><br>
-            <label>Content:</label><br>
-            <textarea name="content" rows="6" cols="50" required></textarea><br>
-            <button type="submit">Create Post</button>
-        </form>
-
-        <div id="result"></div>
+        <article class="post">
+            <h1>{{ .PostTitle }}</h1>
+            <time>{{ .CreatedAt.Format "January 2, 2006" }}</time>
+            
+            <div class="post-content">
+                {{ .ContentHTML }}
+            </div>
+            
+            <hr>
+            <p><a href="/posts">← Back to all posts</a></p>
+        </article>
     </div>
 </body>
 </html>
-{{ end }}
+{{ end }} 

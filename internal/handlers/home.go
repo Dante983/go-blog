@@ -7,7 +7,11 @@ import (
 )
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	err := views.Templates.ExecuteTemplate(w, "layout.gohtml", nil)
+	data := map[string]interface{}{
+		"Title": "Home - Nikola's Blog",
+	}
+	
+	err := views.Templates.ExecuteTemplate(w, "home", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}

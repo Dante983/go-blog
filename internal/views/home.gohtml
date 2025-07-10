@@ -1,14 +1,63 @@
-{{ define "title" }}Home - Nikola's Blog{{ end }}
+{{ define "home" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }}</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <pre style="color: #00ff00; font-size: 16px; line-height: 1; margin-bottom: 10px;">
+╔══════════════════════════════════════════════════════════════╗
+║  _   _ _ _         _       _       ____  _                   ║
+║ | \ | (_) | _____ | | __ _( )___  | __ )| | ___   __ _      ║
+║ |  \| | | |/ / _ \| |/ _` |// __| |  _ \| |/ _ \ / _` |     ║
+║ | |\  | |   < (_) | | (_| | \__ \ | |_) | | (_) | (_| |     ║
+║ |_| \_|_|_|\_\___/|_|\__,_| |___/ |____/|_|\___/ \__, |     ║
+║                                                   |___/      ║
+╚══════════════════════════════════════════════════════════════╝
+            </pre>
+            <nav>
+                <a href="/">[ HOME ]</a> 
+                <a href="/posts">[ ALL POSTS ]</a> 
+                <a href="/admin/posts/new">[ NEW POST ]</a>
+            </nav>
+        </header>
 
-{{ define "content" }}
-<p>Welcome to my blog. This is where I share my thoughts on Go and teaching.</p>
+        <pre style="color: #00ff00; text-align: center; margin: 40px 0;">
+ __      __   _                          _ 
+ \ \    / /__| | ___ ___  _ __ ___   ___| |
+  \ \/\/ / _ \ |/ __/ _ \| '_ ` _ \ / _ \ |
+   \    /  __/ | (_| (_) | | | | | |  __/_|
+    \/\/ \___|_|\___\___/|_| |_| |_|\___(_)
+        </pre>
 
-<button 
-    hx-get="/load-snippet" 
-    hx-target="#snippet" 
-    hx-swap="innerHTML">
-    Load something via HTMX
-</button>
+        <div style="border: 1px solid #00ff00; padding: 20px; margin: 20px 0;">
+            <p>> SYSTEM INITIALIZED...</p>
+            <p>> LOADING BLOG ENTRIES...</p>
+            <p>> STATUS: <span style="color: #00ffff;">ONLINE</span></p>
+        </div>
 
-<div id="snippet"></div>
+        <p style="text-align: center; margin: 30px 0;">
+            This is where I share my thoughts on Go programming and teaching.<br>
+            Feel free to explore the digital archives.
+        </p>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <button 
+                hx-get="/load-snippet" 
+                hx-target="#snippet" 
+                hx-swap="innerHTML">
+                [ TEST HTMX CONNECTION ]
+            </button>
+        </div>
+
+        <div id="snippet" style="text-align: center; margin: 20px 0;"></div>
+    </div>
+</body>
+</html>
 {{ end }}

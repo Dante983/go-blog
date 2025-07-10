@@ -23,6 +23,10 @@ func main() {
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 
+	// Static files
+	fileServer := http.FileServer(http.Dir("assets"))
+	r.Handle("/assets/*", http.StripPrefix("/assets", fileServer))
+
 	// Routes
 	r.Get("/", handlers.HomeHandler)
 	r.Get("/posts", handlers.PostsHandler)

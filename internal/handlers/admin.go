@@ -8,7 +8,11 @@ import (
 )
 
 func AdminNewPostForm(w http.ResponseWriter, r *http.Request) {
-	err := views.Templates.ExecuteTemplate(w, "layout.gohtml", nil)
+	data := map[string]interface{}{
+		"Title": "New Post - Admin",
+	}
+	
+	err := views.Templates.ExecuteTemplate(w, "admin_new", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}

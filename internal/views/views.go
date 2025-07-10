@@ -9,11 +9,7 @@ var Templates *template.Template
 
 func LoadTemplates() {
 	var err error
-	Templates, err = template.ParseFiles(
-			"internal/views/layout.gohtml",
-			"internal/views/home.gohtml",
-			"internal/views/admin_new.gohtml",
-	)
+	Templates, err = template.ParseGlob("internal/views/*.gohtml")
 	if err != nil {
 		log.Fatal("Error loading templates:", err)
 	}
