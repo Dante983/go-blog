@@ -24,7 +24,12 @@
             <nav>
                 <a href="/">[ HOME ]</a> 
                 <a href="/posts">[ ALL POSTS ]</a> 
-                <a href="/admin/posts/new">[ NEW POST ]</a>
+                {{ if .IsAuthenticated }}
+                    <a href="/admin/posts/new">[ NEW POST ]</a>
+                    <a href="/logout">[ LOGOUT ]</a>
+                {{ else }}
+                    <a href="/login">[ LOGIN ]</a>
+                {{ end }}
             </nav>
         </header>
 

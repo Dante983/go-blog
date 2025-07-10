@@ -12,6 +12,8 @@ func AdminNewPostForm(w http.ResponseWriter, r *http.Request) {
 		"Title": "New Post - Admin",
 	}
 	
+	AddAuthData(r, data)
+	
 	err := views.Templates.ExecuteTemplate(w, "admin_new", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

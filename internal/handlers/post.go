@@ -43,6 +43,8 @@ func PostsHandler(w http.ResponseWriter, r *http.Request) {
 		"HasMore":  hasMore,
 		"NextPage": page + 1,
 	}
+	
+	AddAuthData(r, data)
 
 	// Check if this is an HTMX request (for load more functionality)
 	if r.Header.Get("HX-Request") == "true" && page > 1 {
@@ -92,6 +94,8 @@ func SinglePostHandler(w http.ResponseWriter, r *http.Request) {
 		"CreatedAt":  post.CreatedAt,
 		"UpdatedAt":  post.UpdatedAt,
 	}
+	
+	AddAuthData(r, data)
 	
 	// Render post
 	err = views.Templates.ExecuteTemplate(w, "post", data)

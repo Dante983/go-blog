@@ -1,0 +1,89 @@
+{{ define "login" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }}</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <pre style="color: #00ff00; font-size: 16px; line-height: 1; margin-bottom: 10px;">
+╔══════════════════════════════════════════════════════════════╗
+║  _   _ _ _         _       _       ____  _                   ║
+║ | \ | (_) | _____ | | __ _( )___  | __ )| | ___   __ _      ║
+║ |  \| | | |/ / _ \| |/ _` |// __| |  _ \| |/ _ \ / _` |     ║
+║ | |\  | |   < (_) | | (_| | \__ \ | |_) | | (_) | (_| |     ║
+║ |_| \_|_|_|\_\___/|_|\__,_| |___/ |____/|_|\___/ \__, |     ║
+║                                                   |___/      ║
+╚══════════════════════════════════════════════════════════════╝
+            </pre>
+            <nav>
+                <a href="/">[ HOME ]</a> 
+                <a href="/posts">[ ALL POSTS ]</a>
+            </nav>
+        </header>
+
+        <div style="max-width: 400px; margin: 0 auto; margin-top: 50px;">
+            <pre style="color: #00ff00; text-align: center; margin-bottom: 30px;">
+ _    ___   ____ ___ _   _ 
+| |  / _ \ / ___|_ _| \ | |
+| | | | | | |  _ | ||  \| |
+| |_| |_| | |_| || || |\  |
+|____\___/ \____|___|_| \_|
+
+[ SECURE AREA - AUTHENTICATION REQUIRED ]
+            </pre>
+
+            <form 
+                hx-post="/login" 
+                hx-target="#login-result" 
+                hx-swap="innerHTML"
+                style="border: 2px solid #00ff00; padding: 30px; background: rgba(0, 255, 0, 0.02);"
+            >
+                <div style="margin-bottom: 20px;">
+                    <label for="username" style="display: block; margin-bottom: 5px;">USERNAME:</label>
+                    <input 
+                        type="text" 
+                        id="username"
+                        name="username" 
+                        required
+                        autocomplete="username"
+                        style="width: 100%;"
+                        placeholder="_"
+                    >
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label for="password" style="display: block; margin-bottom: 5px;">PASSWORD:</label>
+                    <input 
+                        type="password" 
+                        id="password"
+                        name="password" 
+                        required
+                        autocomplete="current-password"
+                        style="width: 100%;"
+                        placeholder="_"
+                    >
+                </div>
+                
+                <button type="submit" style="width: 100%; margin-top: 10px;">
+                    [ AUTHENTICATE ]
+                </button>
+            </form>
+
+            <div id="login-result" style="margin-top: 20px;"></div>
+
+            <div style="text-align: center; margin-top: 30px; color: #00cc00;">
+                <p>> TIP: Default admin credentials</p>
+                <p>> Username: admin</p>
+                <p>> Password: admin123</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{{ end }} 

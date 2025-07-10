@@ -11,6 +11,8 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		"Title": "Home - Nikola's Blog",
 	}
 	
+	AddAuthData(r, data)
+	
 	err := views.Templates.ExecuteTemplate(w, "home", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
