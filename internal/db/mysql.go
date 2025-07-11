@@ -12,19 +12,37 @@ import (
 var DB *sql.DB
 
 func Connect() {
-	user := os.Getenv("DB_USER")
-	pass := os.Getenv("DB_PASS")
-	host := os.Getenv("DB_HOST")
-	name := os.Getenv("DB_NAME")
-	sslMode := os.Getenv("DB_SSL_MODE")
+	// First, check if we have a DATABASE_URL (common for cloud providers)
+	databaseURL := os.Getenv("DATABASE_URL")
 
-	// Default SSL mode for local development
-	if sslMode == "" {
-		sslMode = "disable"
+	var dsn string
+
+	if databaseURL != "" {
+		// Use the DATABASE_URL directly
+		dsn = databaseURL
+		log.Println("Using DATABASE_URL for connection")
+	} else {
+		// Fall back to individual parameters
+		user := os.Getenv("DB_USER")
+		pass := os.Getenv("DB_PASS")
+		host := os.Getenv("DB_HOST")
+		port := os.Getenv("DB_PORT")
+		name := os.Getenv("DB_NAME")
+		sslMode := os.Getenv("DB_SSL_MODE")
+
+		// Default values
+		if port == "" {
+			port = "5432"
+		}
+		if sslMode == "" {
+			sslMode = "disable"
+		}
+
+		// PostgreSQL connection string format
+		dsn = fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s",
+			host, port, user, pass, name, sslMode)
+		log.Println("Using individual parameters for connection")
 	}
-
-	// PostgreSQL connection string format
-	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=%s", host, user, pass, name, sslMode)
 
 	var err error
 	DB, err = sql.Open("postgres", dsn)
