@@ -2,7 +2,7 @@ module github.com/Dante983/go-blog
 
 go 1.24.5
 
-require github.com/go-sql-driver/mysql v1.9.3
+require github.com/lib/pq v1.10.9
 
 require github.com/yuin/goldmark v1.7.12
 

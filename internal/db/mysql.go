@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/lib/pq"
 )
 
 var DB *sql.DB
@@ -16,11 +16,18 @@ func Connect() {
 	pass := os.Getenv("DB_PASS")
 	host := os.Getenv("DB_HOST")
 	name := os.Getenv("DB_NAME")
+	sslMode := os.Getenv("DB_SSL_MODE")
 
-	dsn := fmt.Sprintf("%s:%s@tcp(%s)/%s?parseTime=true", user, pass, host, name)
+	// Default SSL mode for local development
+	if sslMode == "" {
+		sslMode = "disable"
+	}
+
+	// PostgreSQL connection string format
+	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s sslmode=%s", host, user, pass, name, sslMode)
 
 	var err error
-	DB, err = sql.Open("mysql", dsn)
+	DB, err = sql.Open("postgres", dsn)
 	if err != nil {
 		log.Fatal("Failed to connect to database:", err)
 	}

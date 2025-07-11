@@ -1,0 +1,46 @@
+# Git files
+.git
+.gitignore
+
+# Documentation
+*.md
+LICENSE
+README*
+
+# Development files
+.env
+.env.local
+.env.*.local
+.env.example
+
+# Temporary files
+tmp/
+*.tmp
+*.temp
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+*_test.go
+*.test
+
+# Build artifacts
+main
+go-blog
+
+# Scripts that aren't needed in production
+scripts/
+
+# Docker files
+Dockerfile
+docker-compose.yml
+.dockerignore 

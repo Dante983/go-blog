@@ -22,7 +22,11 @@ go get golang.org/x/crypto/bcrypt
 Apply the users table migration:
 
 ```bash
-mysql -u root -ppassword go_blog < migrations/003_create_users.sql
+# For local PostgreSQL
+psql -U postgres -d go_blog < migrations/003_create_users.sql
+
+# For Supabase
+# Use the SQL editor in Supabase Dashboard and run the migration scripts
 ```
 
 This creates:
@@ -34,6 +38,14 @@ This creates:
 Add to your `.env` file:
 
 ```
+# For Supabase
+DB_HOST=your-project-db.supabase.co
+DB_USER=postgres
+DB_PASS=your-supabase-password
+DB_NAME=postgres
+DB_SSL_MODE=require
+
+# Session key
 SESSION_KEY=your-32-byte-long-secret-key-here!!
 ```
 

@@ -35,7 +35,7 @@ func GetUserByUsername(username string) (*User, error) {
 	query := `
 		SELECT id, username, email, password_hash, is_admin, created_at, updated_at 
 		FROM users 
-		WHERE username = ?
+		WHERE username = $1
 	`
 
 	var user User
@@ -59,7 +59,7 @@ func GetUserByID(id int) (*User, error) {
 	query := `
 		SELECT id, username, email, password_hash, is_admin, created_at, updated_at 
 		FROM users 
-		WHERE id = ?
+		WHERE id = $1
 	`
 
 	var user User
@@ -87,7 +87,7 @@ func CreateUser(username, email, password string, isAdmin bool) error {
 
 	_, err = db.DB.Exec(`
 		INSERT INTO users (username, email, password_hash, is_admin) 
-		VALUES (?, ?, ?, ?)`,
+		VALUES ($1, $2, $3, $4)`,
 		username, email, hash, isAdmin,
 	)
 

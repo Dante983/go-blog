@@ -37,9 +37,9 @@ func GetAllPosts(limit, offset int) ([]Post, error) {
 		SELECT id, title, slug, content, category_id, created_at, updated_at 
 		FROM posts 
 		ORDER BY created_at DESC 
-		LIMIT ? OFFSET ?
+		LIMIT $1 OFFSET $2
 	`
-	
+
 	rows, err := db.DB.Query(query, limit, offset)
 	if err != nil {
 		return nil, err
@@ -49,7 +49,7 @@ func GetAllPosts(limit, offset int) ([]Post, error) {
 	var posts []Post
 	for rows.Next() {
 		var post Post
-		err := rows.Scan(&post.ID, &post.Title, &post.Slug, &post.Content, 
+		err := rows.Scan(&post.ID, &post.Title, &post.Slug, &post.Content,
 			&post.CategoryID, &post.CreatedAt, &post.UpdatedAt)
 		if err != nil {
 			return nil, err
@@ -65,22 +65,22 @@ func GetPostBySlug(slug string) (*Post, error) {
 	query := `
 		SELECT id, title, slug, content, category_id, created_at, updated_at 
 		FROM posts 
-		WHERE slug = ?
+		WHERE slug = $1
 	`
-	
+
 	var post Post
 	err := db.DB.QueryRow(query, slug).Scan(
 		&post.ID, &post.Title, &post.Slug, &post.Content,
 		&post.CategoryID, &post.CreatedAt, &post.UpdatedAt,
 	)
-	
+
 	if err == sql.ErrNoRows {
 		return nil, nil
 	}
 	if err != nil {
 		return nil, err
 	}
-	
+
 	return &post, nil
 }
 

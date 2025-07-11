@@ -11,9 +11,9 @@ func AdminNewPostForm(w http.ResponseWriter, r *http.Request) {
 	data := map[string]interface{}{
 		"Title": "New Post - Admin",
 	}
-	
+
 	AddAuthData(r, data)
-	
+
 	err := views.Templates.ExecuteTemplate(w, "admin_new", data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -31,7 +31,7 @@ func AdminCreatePost(w http.ResponseWriter, r *http.Request) {
 	content := r.FormValue("content")
 
 	_, err := db.DB.Exec(`
-		INSERT INTO posts (title, slug, content) VALUES (?, ?, ?)`,
+		INSERT INTO posts (title, slug, content) VALUES ($1, $2, $3)`,
 		title, slug, content,
 	)
 
